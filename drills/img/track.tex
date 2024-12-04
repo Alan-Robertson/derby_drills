@@ -11,7 +11,7 @@
 \usepackage{mathtools}
 \usepackage{pagecolor}
 \usepackage{amsmath} % for \dfrac
-\usepackage{tikz}
+\usepackage{tikz,ifthen}
 \tikzset{>=latex} % for LaTeX arrow head
 \usepackage{braket}
 \usepackage{pgfplots} 
@@ -20,7 +20,7 @@
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{1em}
 
-\usetikzlibrary{patterns, calc}
+\usetikzlibrary{patterns, calc, intersections}
 
 \def\rescale{0.1}
 \def\innerwidth{25}
@@ -72,9 +72,9 @@
 
 
 
-%\draw[dashed] (center_left) -- (center_right);
-%\draw[dashed] (track_inner_right_bottom) -- (track_inner_right_top);
-%\draw[dashed] (track_inner_left_bottom) -- (track_inner_left_top);
+\draw[dotted] (center_left) -- (center_right);
+\draw[dotted] (track_inner_right_bottom) -- (track_inner_right_top);
+\draw[dotted] (track_inner_left_bottom) -- (track_inner_left_top);
 %
 %\draw[dotted] (track_outer_left) -- (track_inner_left_offset);
 %\draw[dotted] (track_outer_right) -- (track_inner_right_offset);
@@ -82,103 +82,54 @@
 
 \draw[] (track_inner_left_bottom) -- (track_inner_right_bottom);
 \draw[] (track_inner_left_top) -- (track_inner_right_top);
-\draw[] (track_outer_left_bottom) -- (track_outer_right_bottom);
-\draw[] (track_outer_left_top) -- (track_outer_right_top);
+\draw[name path=track_outer_bottom] (track_outer_left_bottom) -- (track_outer_right_bottom);
+\draw[name path=track_outer_top] (track_outer_left_top) -- (track_outer_right_top);
 
 
-\draw[] (track_inner_left_bottom) arc (270:90:0.5 * \innerwidth);
-\draw[] (track_inner_right_top) arc (270:90:-0.5 * \innerwidth);
+\draw[name path=apex_left_inner] (track_inner_left_bottom) arc (270:90:0.5 * \innerwidth);
+\draw[name path=apex_right_inner] (track_inner_right_top) arc (270:90:-0.5 * \innerwidth);
 
-\draw[] (track_outer_left_bottom) arc (270:90:0.5 * \outerwidth);
-\draw[] (track_outer_right_top) arc (270:90:-0.5 * \outerwidth);
+\draw[name path=apex_left_outer] (track_outer_left_bottom) arc (270:90:0.5 * \outerwidth);
+\draw[name path=apex_right_outer] (track_outer_right_top) arc (270:90:-0.5 * \outerwidth);
+
+\draw[] (track_inner_right_bottom) -- (track_outer_right_bottom);
+\draw[dashed] (track_inner_left_top) -- (track_outer_left_top);
+
+\foreach \i in {1, 2, 3}{
+    \coordinate[](ft_marker_bottom_center) at ([xshift = -10 * \i cm]track_inner_right_bottom);
+    \coordinate[](ft_marker_bottom_outer) at ([yshift=-0.52 * \outerwidth cm + 0.5 * \innerwidth cm]ft_marker_bottom_center);
+    \path[name path=ft_marker_bottom](ft_marker_bottom_outer) -- (ft_marker_bottom_center);  
+    \path[name intersections={of=ft_marker_bottom and track_outer_bottom,by=ft_outer_bottom}];
+    \ifthenelse{\i < 3}{
+        \draw[dashed] (ft_outer_bottom) -- (ft_marker_bottom_center); 
+    }{
+        \draw[] (ft_outer_bottom) -- (ft_marker_bottom_center); 
+    }
+}  
+
+\foreach \i in {1, 2, 3}{
+    \coordinate[](ft_marker_top_center) at ([xshift= 10 * \i cm]track_inner_left_top);
+    \coordinate[](ft_marker_top_outer) at ([yshift=0.52 * \outerwidth cm - 0.5 * \innerwidth cm]ft_marker_top_center);
+    \path[name path=ft_marker_top](ft_marker_top_outer) -- (ft_marker_top_center);  
+    \path[name intersections={of=ft_marker_top and track_outer_top,by=ft_outer_top}];
+    \draw[dashed] (ft_outer_top) -- (ft_marker_top_center); 
+}
 
 
 
 
 
-%%\draw[dashed] (0, 0 ) -- (\tracklength, 0);
-%\draw[dashed] (0, 0.5 * \innerwidth ) -- (0, -0.5 * \innerwidth);
-%\draw[dashed] (\tracklength , 0.5 * \innerwidth) -- (\tracklength, -0.5 * \innerwidth);
-%
-%\draw (0, 0.5 * \innerwidth ) -- (\tracklength, 0.5 * \innerwidth);
-%\draw (0, -0.5 * \innerwidth ) -- (\tracklength, -0.5 * \innerwidth);
-%
-%% Inside Apex
-%    \draw[] (\tracklength , -0.5 * \innerwidth) arc (90:270:- 0.5 * \innerwidth);
-%    \draw[] (0, 0.5 * \innerwidth ) arc (90:270:0.5 * \innerwidth);
-%
-%
-%% Outside Straight
-%    \draw[] (0, 0.5 * \innerwidth  + \trackwidthmin) -- (\tracklength, 0.5 * \innerwidth+ \trackwidthmax);
-%    \draw[] (0, -0.5 * \innerwidth  - \trackwidthmax) -- (\tracklength, - 0.5 * \innerwidth - \trackwidthmin);
-%
-%% Outwide Apex
-%    \draw[] (\tracklength , -0.5 * \innerwidth) arc (90:270:- 0.5 * \innerwidth);
-%%    \draw[] (0, 0.5 * \innerwidth ) arc (90:270:0.5 * \innerwidth);
-%
-%
-%
-%
-%%   \foreach \y in {0,2,...,4}{
-%%    \foreach \x in {0,2,...,4}{
-%%        \fill[gray] (\x,\y) rectangle (1+\x,1+\y) rectangle (2+\x,2+\y);
-%%        \fill[yellow!40!red!10] (\x+1,\y) rectangle (\x+2,\y+1);
-%%        \fill[yellow!40!red!10] (\x,\y+1) rectangle (\x+1,\y+2);
-%%    }}
-%% \foreach \x in {0, 2,...,4}{
-%%    \draw[gray, fill=gray] (\x,0) -- (1+\x,0) arc (0:180:-0.5) -- cycle;
-%%    \draw[gray, fill=gray](\x,6) -- (1+\x,6) arc (0:180:0.5) -- cycle;
-%%    }
-%%    \foreach \y in {0, 2,...,4}{
-%%    \draw[fill=yellow!40!red!10] (0,\y) -- (0,1+\y) arc (90:270:0.5);
-%%    \draw[fill=yellow!40!red!10] (6,\y) -- (6,1+\y) arc (90:270:-0.5);
-%%    }
-%%
-%%    \foreach \x in {0, 1, ...,5}{
-%%        \foreach \y in {0, 1, ...,5}{
-%%            \filldraw[draw=black, fill=pink!60] (\x + 0.5, \y + 0.5) circle[radius=2pt] node[font=\tiny] {};
-%%        }
-%%    }
-%%
-%%    % X Lattice
-%%    \foreach \x in {0, 2, ..., 5}{
-%%            \draw[thick, dashed, gray] (\x, 0) -- (0, \x);
-%%            \draw[thick, dashed, gray] (\x, 6) -- (6, \x);
-%%            \draw[thick, dashed, gray] (\x + 1, 6) -- (-0.5, 4.5 - \x);
-%%            \draw[thick, dashed, gray] (\x + 1, 0) -- (6.5, 5.5 - \x);
-%%            \draw[thick, dashed, gray] (-0.5, \x + 0.5) -- (0, \x);
-%%            \draw[thick, dashed, gray] (6.5, \x + 1.5) -- (6, \x + 2);
-%%    }
-%%
-%%    % Z Lattice
-%%    \foreach \x in {1, 3, ..., 6}{
-%%            \draw[thick, dash dot, yellow!40!red!10] (0, \x) -- (\x + 0.5, -0.5);
-%%            \draw[thick, dash dot, yellow!40!red!10] (\x - 0.5, 6.5) -- (6, \x);
-%%            \draw[thick, dash dot, yellow!40!red!10] (\x + 1, 6) -- (0, 5 - \x);
-%%            \draw[thick, dash dot, yellow!40!red!10] (\x + 1, 0) -- (6, 5 - \x);
-%%            \draw[thick, dash dot, yellow!40!red!10] (\x + 0.5, -0.5) -- (\x + 1, 0);
-%%            \draw[thick, dash dot, yellow!40!red!10] (\x - 0.5, 6.5) -- (\x - 1 , 6);
-%%    }
-%%
-%%
-%%    \foreach \x in {0, 1, ...,5}{
-%%        \foreach \y in {0, 1, ...,5}{
-%%            \filldraw[draw=black, fill=pink!60] (\x + 0.5, \y + 0.5) circle[radius=2pt] node[font=\tiny] {};
-%%        }
-%%    }
-%%
-%%    \foreach \x in {0, 2, ...,5}{
-%%        \filldraw[draw=black, fill=pink!60] (\x + 1.5, -0.5) circle[radius=2pt] node[font=\tiny] {};
-%%        \filldraw[draw=black, fill=pink!60] (\x + 0.5, 6.5) circle[radius=2pt] node[font=\tiny] {};
-%%        \filldraw[draw=black, fill=pink!60] (-0.5, \x + 0.5) circle[radius=2pt] node[font=\tiny] {};
-%%        \filldraw[draw=black, fill=pink!60] (6.5, \x + 1.5) circle[radius=2pt] node[font=\tiny] {};
-%%    }
-%%    \foreach \x in {0, 1, ...,6}{
-%%        \foreach \y in {0, 1, ...,6}{
-%%            \filldraw[draw=black] (\x, \y) circle[radius=2pt] node[font=\tiny] {};
-%%        }
-%%    }
+\foreach \i in {1, 2, 3, 4, 5}{
+    \path[name path=apex_marker](center_right) --++ (xy polar cs:angle=-90 + 30 * \i,radius=1cm);
+    \path[name intersections={of=apex_marker and apex_right_inner,by=apex_inner}];
+    \path[name intersections={of=apex_marker and apex_right_outer,by=apex_outer}];
+    \draw[dashed] (apex_inner) -- (apex_outer);
 
+    \path[name path=apex_marker](center_left) --++ (xy polar cs:angle=90 + 30 * \i,radius=1cm);
+    \path[name intersections={of=apex_marker and apex_left_inner,by=apex_inner}];
+    \path[name intersections={of=apex_marker and apex_left_outer,by=apex_outer}];
+    \draw[dashed] (apex_inner) -- (apex_outer);
+}
 
 \end{tikzpicture} 
 \end{document}
