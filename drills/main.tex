@@ -1,0 +1,175 @@
+% !TEX options=--shell-escape
+
+\documentclass[11pt]{report}
+\usepackage{etex}
+%\reserveinserts{28}
+%\usepackage{times}
+%\usepackage{a4}
+\usepackage{mathtools}
+\usepackage{bbm}
+%\usepackage{graphics}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{epsfig}
+\usepackage{mathrsfs}
+%\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{minted}
+\usepackage{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{qcircuit}
+\usepackage{float}
+\usepackage[toc,page]{appendix}
+\usepackage{enumitem}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[skip=4pt]{parskip}
+\usepackage[colorlinks=true, allcolors=Maroon]{hyperref}
+\newcommand{\arXiv}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
+\usepackage{kpfonts}
+\usepackage{physics}
+\usepackage{cleveref}
+\usepackage{authblk}
+\renewcommand\Affilfont{\itshape\small}
+\usepackage{datetime2}
+\usepackage{amsmath}
+\usepackage{orcidlink}
+\usepackage{wasysym}
+
+\usepackage{algorithm}
+
+\usepackage[noend]{algpseudocode}
+
+\usepackage{drawstack}
+
+
+\usepackage{tabulary}
+\usepackage{tabularx, booktabs}
+\usepackage{multirow}
+\usepackage[backend=bibtex]{biblatex}
+\usepackage{subcaption}
+
+
+
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{references}
+
+\pgfplotsset{compat=1.5.1}
+
+\def\baselinestretch{1.05}
+\baselineskip=2\baselineskip
+
+%\setlength{\textwidth}{16cm}
+
+\setcounter{tocdepth}{1}
+\definecolor{darkgreen}{RGB}{0,150,0}
+\definecolor{darkblue}{RGB}{0,0,127}
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\setcounter{MaxMatrixCols}{20}
+
+% Sensible multi-col
+%\usepackage{beamerarticle}
+%\makeatletter
+%\mode<article>{\renewenvironment<>{beamer@columnenv}[2][]{ \begin{minipage}[t]{#2}\vspace{0pt}}{\end{minipage}}
+%\let\endcolumn\endbeamer@columnenv}
+%\makeatother
+
+\hypersetup{
+	breaklinks,
+	colorlinks,
+	linkcolor=darkblue,
+	citecolor=darkgreen,
+	urlcolor=blue
+}
+
+\begin{document}
+\nocite{*}
+
+\pagenumbering{arabic}
+
+
+%Note: the \input{filename} works the same as include{filename} 
+%\linespread{2}
+%\include{titlepage}
+%\include{acknowledgements}
+%\include{abstract}\newpage
+
+\tableofcontents\newpage
+\pagestyle{plain}
+
+\input{introduction}
+
+% Sticky Skating
+\input{sticky/intro}
+
+\input{sticky/eggshells}
+\input{sticky/weaves}
+\input{sticky/carves}
+\input{sticky/manual}
+
+
+% Stopping 
+\input{stopping/intro}
+\input{stopping/intro_plough_stops}
+\input{stopping/intro_plough_stops}
+\input{stopping/ploughs_one_foot}
+\input{stopping/t_stops}
+\input{stopping/backwards_ploughs}
+\input{stopping/power_slides}
+\input{stopping/hockey_stops}
+\input{stopping/turn_around_toe_stops}
+
+% One Foot
+\input{one_foot/intro}
+
+
+% Crossovers
+\input{crossovers/intro}
+
+
+% Transitions
+\input{transitions/intro}
+\input{transitions/turnout}
+\input{transitions/staggered}
+\input{transitions/pivot}
+\input{transitions/tight}
+\input{transitions/jump_partial}
+\input{transitions/jump_staggered}
+\input{transitions/jump_double}
+\input{transitions/one_foot}
+
+% Toe Stops
+\input{toe_stops/intro}
+\input{toe_stops/walking}
+\input{toe_stops/grape_vines}
+\input{toe_stops/side_shuffle}
+\input{toe_stops/skating_to_toe_stop_movement}
+
+
+% Laterals
+\input{laterals/intro}
+
+% Jumping
+\input{jumping/intro}
+\input{jumping/stepping}
+\input{jumping/leaping}
+\input{jumping/vertical}
+\input{jumping/basic_turn}
+\input{jumping/one_foot_jump}
+\input{jumping/two_step_jump}
+\input{jumping/two_step_turn}
+\input{jumping/back_foot_jump}
+
+
+
+
+\end{document}
