@@ -1,0 +1,67 @@
+%!TEX options=--shell-escape
+\documentclass[tikz]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{accsupp}    
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{pagecolor}
+\usepackage{amsmath} % for \dfrac
+\usepackage{tikz,ifthen}
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage{braket}
+\usepackage{pgfplots} 
+\usepackage[edges]{forest}
+\usetikzlibrary{patterns, backgrounds, arrows.meta}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1em}
+
+\usetikzlibrary{patterns, calc, intersections}
+
+\def\rescale{0.1}
+\def\innerwidth{25}
+\def\outerwidth{53}
+\def\innerlength{35}
+\def\trackwidthmax{15}
+\def\trackwidthmin{13}
+\def\trackarcoffset{1}
+
+\def\delta{2}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+\node[minimum height=25em,
+      minimum width=15em,
+           path picture={
+               \node[yscale=1,inner sep=0,outer sep=0, xshift=-4cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=2, angle=90]{../track/track}
+               };
+           }] at (0, 0) {};
+
+
+% One Pack
+\node[shape=circle, line width=0.3mm, draw=black!80,fill=blue!20, inner sep = 0.5em] (block_a_end) at (0.1, -0.6) {};
+\node[shape=circle, line width=0.3mm, draw=black!80,fill=blue!20, inner sep = 0.5em] (block_c_end) at (0.5, -0.6) {};
+\node[shape=circle, line width=0.3mm, draw=black!80,fill=blue!20, inner sep = 0.5em] (block_b_end) at (0.3, -0.3) {};
+
+% Next
+\node[opacity=0.5, shape=circle, line width=0.3mm, draw=black!80,fill=blue!20, inner sep = 0.5em] (block_a_start) at (-0.2, -1.1) {};
+\node[opacity=0.5, shape=circle, line width=0.3mm, draw=black!80,fill=blue!20, inner sep = 0.5em] (block_b_start) at (-0.6, -1.1) {};
+\node[opacity=0.5, shape=circle, line width=0.3mm, draw=black!80,fill=blue!20, inner sep = 0.5em] (block_c_start) at (-0.4, -0.8) {};
+
+
+\draw[-latex, dashed, line width=0.15em] (block_a_start) to (block_a_end);
+\draw[-latex, dashed, line width=0.15em] (block_b_start) to[bend left=45] (block_b_end);
+\draw[-latex, dashed, line width=0.15em] (block_c_start) to[bend left=45] (block_c_end);
+
+
+
+\end{tikzpicture} 
+\end{document}
+
