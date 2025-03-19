@@ -1,0 +1,174 @@
+%!TEX options=--shell-escape
+\documentclass[tikz]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{accsupp}    
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{pagecolor}
+\usepackage{amsmath} % for \dfrac
+\usepackage{tikz,ifthen}
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage{braket}
+\usepackage{pgfplots} 
+\usepackage[edges]{forest}
+\usetikzlibrary{patterns, backgrounds, arrows.meta}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1em}
+
+\usetikzlibrary{patterns, calc, intersections}
+
+\def\rescale{0.1}
+\def\innerwidth{25}
+\def\outerwidth{53}
+\def\innerlength{35}
+\def\trackwidthmax{15}
+\def\trackwidthmin{13}
+\def\trackarcoffset{1}
+
+\def\delta{2}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+
+\coordinate (one_left) at (-2, -0.5);
+\coordinate (one_right) at (2, 0);
+
+\coordinate (two_left) at (6, 2.5);
+\coordinate (two_right) at (10, 2);
+
+\coordinate (three_left) at (12, 6);
+\coordinate (three_right) at (15, 4.5);
+
+\coordinate (four_left) at (7, 10);
+\coordinate (four_right) at (11, 10.5);
+
+\coordinate (five_left) at (-2, 12);
+\coordinate (five_right) at (2, 12.5);
+
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[yscale=1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=-55]{../skates/skates_5}
+               };
+           }]  at (one_right) {};
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[xscale=1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=-55]{../skates/skates_5}
+               };
+           }]  at (one_left) {};
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[yscale=1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=-65]{../skates/skates_5}
+               };
+           }]  at (two_right) {};
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[xscale=1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=-75]{../skates/skates_5}
+               };
+           }]  at (two_left) {};
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[xscale=-1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=35]{../skates/skates_5}
+               };
+           }]  at (three_right) {};
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[xscale=-1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=0]{../skates/skates_5}
+               };
+           }]  at (three_left) {};
+
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[xscale=-1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=-65]{../skates/skates_5}
+               };
+           }]  at (four_right) {};
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[xscale=-1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=-75]{../skates/skates_5}
+               };
+           }]  at (four_left) {};
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[xscale=-1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=-65]{../skates/skates_5}
+               };
+           }]  at (five_right) {};
+
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[xscale=-1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=-75]{../skates/skates_5}
+               };
+           }]  at (five_left) {};
+
+
+
+
+
+
+\draw[-latex, dashed, line width=0.5em, rounded corners=3em] (one_left) to [bend left=5] (two_left) to [bend right=45](three_left) to [bend right=45](four_left);
+
+\draw[-latex, dashed, line width=0.5em, rounded corners=3em] (one_right) to [bend left=5] (two_right) to [bend right=15](three_right) to [bend right=45] (four_right);
+
+
+%\draw[opacity=1, -latex, dashed, line width=0.5em] (two_left) to [bend right=45] (three_left);
+
+
+
+
+\end{tikzpicture} 
+\end{document}
+
