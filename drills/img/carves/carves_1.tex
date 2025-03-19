@@ -37,20 +37,24 @@
 \begin{tikzpicture}[scale=2]
 
 
-\coordinate (one_left) at (-2, -0.5);
-\coordinate (one_right) at (2, 0);
+\coordinate (one_left) at (-5, 1.5);
+\coordinate (one_right) at (-1, 1.5);
 
 \coordinate (two_left) at (6, 2.5);
 \coordinate (two_right) at (10, 2);
 
 \coordinate (three_left) at (12, 6);
-\coordinate (three_right) at (15, 4.5);
+\coordinate (three_right) at (14, 4);
 
-\coordinate (four_left) at (7, 10);
-\coordinate (four_right) at (11, 10.5);
+\coordinate (four_left) at (6, 11);
+\coordinate (four_right) at (10, 10.5);
 
-\coordinate (five_left) at (-2, 12);
-\coordinate (five_right) at (2, 12.5);
+\coordinate (five_left) at (-5, 13);
+\coordinate (five_right) at (-1, 13.5);
+
+
+
+
 
 
 
@@ -59,7 +63,7 @@
       opacity=1,
            path picture={
                \node[yscale=1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
-                   \includegraphics[scale=1, angle=-55]{../skates/skates_5}
+                   \includegraphics[scale=1, angle=-85]{../skates/skates_5}
                };
            }]  at (one_right) {};
 
@@ -69,7 +73,7 @@
       opacity=1,
            path picture={
                \node[xscale=1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
-                   \includegraphics[scale=1, angle=-55]{../skates/skates_5}
+                   \includegraphics[scale=1, angle=-75]{../skates/skates_5}
                };
            }]  at (one_left) {};
 
@@ -79,7 +83,7 @@
       opacity=1,
            path picture={
                \node[yscale=1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
-                   \includegraphics[scale=1, angle=-65]{../skates/skates_5}
+                   \includegraphics[scale=1, angle=-75]{../skates/skates_5}
                };
            }]  at (two_right) {};
 
@@ -140,7 +144,7 @@
       opacity=1,
            path picture={
                \node[xscale=-1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
-                   \includegraphics[scale=1, angle=-65]{../skates/skates_5}
+                   \includegraphics[scale=1, angle=-75]{../skates/skates_5}
                };
            }]  at (five_right) {};
 
@@ -150,7 +154,7 @@
       opacity=1,
            path picture={
                \node[xscale=-1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
-                   \includegraphics[scale=1, angle=-75]{../skates/skates_5}
+                   \includegraphics[scale=1, angle=-85]{../skates/skates_5}
                };
            }]  at (five_left) {};
 
@@ -158,10 +162,9 @@
 
 
 
+\draw[-latex, dashed, line width=0.5em, rounded corners=3em] (one_left) to [bend left=5] (two_left) to [bend right=45](three_left) to [bend right=45](four_left) to [bend right=5](five_left);
 
-\draw[-latex, dashed, line width=0.5em, rounded corners=3em] (one_left) to [bend left=5] (two_left) to [bend right=45](three_left) to [bend right=45](four_left);
-
-\draw[-latex, dashed, line width=0.5em, rounded corners=3em] (one_right) to [bend left=5] (two_right) to [bend right=15](three_right) to [bend right=45] (four_right);
+\draw[-latex, dashed, line width=0.5em, rounded corners=3em] (one_right) to [bend left=5] (two_right) to [bend right=15](three_right) to [bend right=45] (four_right) to [bend right=5](five_right);
 
 
 %\draw[opacity=1, -latex, dashed, line width=0.5em] (two_left) to [bend right=45] (three_left);
