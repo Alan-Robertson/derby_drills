@@ -25,14 +25,15 @@
 \usepackage[toc,page]{appendix}
 \usepackage{enumitem}
 
+\usepackage{graphicx}
+\graphicspath{{img}}
+
+
 \usepackage[margin=1.1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[skip=4pt]{parskip}
 \usepackage[colorlinks=true, allcolors=Maroon]{hyperref}
-\newcommand{\arXiv}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
-\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
 \usepackage{kpfonts}
-\usepackage{physics}
 \usepackage{cleveref}
 \usepackage{authblk}
 \renewcommand\Affilfont{\itshape\small}
@@ -113,10 +114,29 @@
 
 \input{non_contact/sticky/eggshells}
 \input{non_contact/sticky/weaves}
-\input{non_contact/sticky/carves}
+
+
+% Carves
+\input{non_contact/sticky/carves/intro}
+\input{non_contact/sticky/carves/developmental_circles}
+\input{non_contact/sticky/carves/warm_up}
+\input{non_contact/sticky/carves/cross_over_carves}
+\input{non_contact/sticky/carves/turn_about_carves}
+
+
+% Backwards Carves
+\input{non_contact/sticky/backwards_carves/intro}
+\input{non_contact/sticky/backwards_carves/developmental_circles}
+\input{non_contact/sticky/backwards_carves/warm_up}
+\input{non_contact/sticky/backwards_carves/cross_over_carves}
+\input{non_contact/sticky/backwards_carves/turn_about_carves}
+\input{non_contact/sticky/backwards_carves/stationary}
+
+
+
+
 \input{non_contact/sticky/backwards}
 \input{non_contact/sticky/backwards_weaves}
-\input{non_contact/sticky/backwards_carves}
 \input{non_contact/sticky/manual}
 \input{non_contact/sticky/reversed_carves}
 
@@ -138,12 +158,27 @@
 
 \input{non_contact/stopping/plough_stops}
 \input{non_contact/stopping/ploughs_one_foot}
+
 \input{non_contact/stopping/t_stops}
+
 \input{non_contact/stopping/turn_around_toe_stops}
 \input{non_contact/stopping/backwards_ploughs}
 \input{non_contact/stopping/power_slides}
-\input{non_contact/stopping/hockey_stops}
-\input{non_contact/stopping/one_foot_hockey}
+
+\input{non_contact/stopping/hockey/intro}
+\input{non_contact/stopping/hockey/developmental_carve}
+\input{non_contact/stopping/hockey/developmental_question_mark}
+\input{non_contact/stopping/hockey/developmental_lateral}
+\input{non_contact/stopping/hockey/developmental_pivot}
+
+\input{non_contact/stopping/hockey/hockey_stops}
+
+
+\input{non_contact/stopping/one_foot_hockey/intro}
+\input{non_contact/stopping/one_foot_hockey/developmental_forward_foot}
+\input{non_contact/stopping/one_foot_hockey/backwards}
+\input{non_contact/stopping/one_foot_hockey/developmental_back_foot}
+
 
 
 % One Foot
@@ -259,13 +294,24 @@
 \input{contact/three_wall/ping_pong}
 
 % Juking
-\input{contact/jukes/intro}
-\input{contact/jukes/lateral_leaps}
-\input{contact/jukes/toe_stop_lateral}
-\input{contact/jukes/toe_stop_line}
-\input{contact/jukes/toe_stop_spin}
-\input{contact/jukes/pull_under_spin}
-\input{contact/jukes/backwards_glide}
+\input{contact/jammer_movement/intro}
+\input{contact/jammer_movement/stationary_jukes/intro}
+\input{contact/jammer_movement/stationary_jukes/lateral_leaps}
+\input{contact/jammer_movement/stationary_jukes/toe_stop_lateral}
+\input{contact/jammer_movement/stationary_jukes/toe_stop_line}
+\input{contact/jammer_movement/stationary_jukes/toe_stop_spin}
+\input{contact/jammer_movement/stationary_jukes/pull_under_spin}
+\input{contact/jammer_movement/stationary_jukes/backwards_glide}
+
+\input{contact/jammer_movement/line_to_line/intro} 
+\input{contact/jammer_movement/line_to_line/cutting_in} 
+\input{contact/jammer_movement/line_to_line/juke_approach} 
+\input{contact/jammer_movement/line_to_line/iterate} 
+\input{contact/jammer_movement/line_to_line/bean_dip} 
+\input{contact/jammer_movement/line_to_line/toe_stop_line} 
+
+
+
 
 
 % Scenarios
@@ -275,7 +321,6 @@
 \input{contact/scenarios/endless_offence}
 \input{contact/scenarios/last_one_standing}
 \input{contact/scenarios/collapsing_pack}
-
 
 
 \end{document}
