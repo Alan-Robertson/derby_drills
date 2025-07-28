@@ -1,0 +1,102 @@
+%!TEX options=--shell-escape
+\documentclass[tikz]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{accsupp}    
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{pagecolor}
+\usepackage{amsmath} % for \dfrac
+\usepackage{tikz,ifthen}
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage{braket}
+\usepackage{pgfplots} 
+\usepackage[edges]{forest}
+\usetikzlibrary{patterns, backgrounds, arrows.meta}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1em}
+
+\usetikzlibrary{patterns, calc, intersections}
+
+\def\rescale{0.1}
+\def\innerwidth{25}
+\def\outerwidth{53}
+\def\innerlength{35}
+\def\trackwidthmax{15}
+\def\trackwidthmin{13}
+\def\trackarcoffset{1}
+
+\def\delta{2}
+
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+\node[minimum height=25em,
+      minimum width=15em,
+           path picture={
+               \node[yscale=1,inner sep=0,outer sep=0, xshift=-4cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=2, angle=90]{../track/track}
+               };
+           }] at (0, 0) {};
+
+
+% One Pack
+
+
+\node[shape=circle, line width=0.25mm, draw=black!80,fill=blue!20, inner sep = 0.45em] (blocker_a_start) at (-0.4, -0.75) {};
+\node[shape=circle, line width=0.25mm, draw=black!80,fill=blue!20, inner sep = 0.45em] (blocker_b_start) at (-0.2, -0.45) {};
+
+
+\node[shape=circle, line width=0.25mm, draw=black!80,fill=blue!20, inner sep = 0.45em] (blocker_a_end) at (0.3, -0.6) {};
+\node[shape=circle, line width=0.25mm, draw=black!80,fill=blue!20, inner sep = 0.45em] (blocker_b_end) at (0.5, -0.3) {};
+
+
+\coordinate (jammer_start) at (-0.4, -1.9);
+
+\coordinate (jammer_mid_a) at (-0.4, -0.9);
+
+\coordinate (jammer_mid_b) at (0.55, -0.6);
+
+\coordinate (jammer_end) at (-0.2, -0.1);
+
+\coordinate (jammer_juke_a) at (-0.6, -0.8);
+\coordinate (jammer_juke_end) at (-0.5, 0.1);
+
+
+
+
+
+% Next
+%\draw[-latex, dashed, line width=0.15em] (jammer_start) -- (jammer_mid) --  (jammer_end);
+
+
+
+\path (jammer_start) -- ($(jammer_mid_a)-(0.5,0)$) coordinate(a1);
+\path (jammer_start) -- (jammer_mid_a) coordinate(a2);
+
+
+
+\path (jammer_start) -- ($(jammer_mid_b)+(0.5,0)$) coordinate(b1);
+\path (jammer_start) -- (jammer_mid_b) coordinate(b2);
+
+\draw[-latex] (jammer_start) .. controls (a1) and (a2) ..  (jammer_mid_a) .. controls (b1) and (b2) .. (jammer_end);
+
+%\draw[-latex] (jammer_start) .. controls (a1) and (a2) ..  (jammer_juke_a) -- (jammer_juke_end);
+
+
+
+\draw[-latex, dashed] (blocker_a_start) -- (blocker_a_end);
+\draw[-latex, dashed] (blocker_b_start) -- (blocker_b_end);
+
+\node[shape=circle, line width=0.2mm, draw=black!80,fill=red!20, inner sep = 0.4em] (jammer_start_node) at (jammer_start) {};
+
+
+
+\end{tikzpicture} 
+\end{document}
+
