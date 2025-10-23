@@ -59,8 +59,10 @@
 \coordinate (seven_left) at (-18, 19);
 \coordinate (seven_right) at (-20, 17);
 
-\coordinate (eight_left) at (-16.5, 25);
+\coordinate (eight_left) at (-13.5, 26);
 \coordinate (eight_right) at (-20, 22);
+\coordinate (eight_right_b) at (-17, 25);
+
 
 \coordinate (nine_left) at (-5, 29);
 \coordinate (nine_right) at (-1, 28.5);
@@ -217,9 +219,18 @@
       opacity=1,
            path picture={
                \node[yscale=1, xscale=-1, inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
-                   \includegraphics[scale=1, angle=210]{../skates/skates_5}
+                   \includegraphics[scale=1, angle=220]{../skates/skates_5}
                };
            }]  at (eight_right) {};
+
+\node[minimum height=25em,
+      minimum width=25em,
+      opacity=1,
+           path picture={
+               \node[yscale=1, xscale=-1, inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
+                   \includegraphics[scale=1, angle=230]{../skates/skates_5}
+               };
+           }]  at (eight_right_b) {};
 
 
 \node[minimum height=25em,
@@ -227,7 +238,7 @@
       opacity=1,
            path picture={
                \node[xscale=1,inner sep=0,outer sep=0, xshift=0cm ] at (path picture bounding box.center){
-                   \includegraphics[scale=1, angle=-35]{../skates/skates_5}
+                   \includegraphics[scale=1, angle=-65]{../skates/skates_5}
                };
            }]  at (eight_left) {};
 
@@ -262,9 +273,11 @@
 \draw[-latex, dashed, line width=0.5em, rounded corners=3em] [bend right=45] (five_left) to [bend right=5](six_left) to [bend left=45](seven_left);
 
 \draw[-latex, dashed, line width=0.5em, rounded corners=3em] (one_right) to [bend left=5] (two_right) to [bend right=15](three_right);
-\draw[-latex, dashed, line width=0.5em, rounded corners=3em] [bend right=45] (four_right) to [bend right=5](five_right) to [bend right=5](six_right) to [bend left=5](seven_right) to [bend left=45](eight_right);
+\draw[-latex, dashed, line width=0.5em, rounded corners=3em] [bend right=45] (four_right) to [bend right=5](five_right) to [bend right=5](six_right) to [bend left=5](seven_right) to [bend left=45](eight_right) to [bend left=5](eight_right_b);
 
 \draw[-latex, dashed, line width=0.5em, rounded corners=3em] [bend right=5](eight_left) to [bend left=5](nine_left);
+
+\draw[-latex, dash dot, line width=0.5em, rounded corners=3em] [bend right=5](eight_right_b) to [bend right=55](nine_right);
 
 
 
