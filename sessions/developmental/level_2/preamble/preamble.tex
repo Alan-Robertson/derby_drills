@@ -1,0 +1,385 @@
+\documentclass{journal}
+
+\usepackage{amsmath}
+\usepackage[nopatch]{microtype}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{pgfgantt}
+
+\usepackage[left=2.45cm,top=3cm,right=2.45cm,bottom=2.5cm,bindingoffset=0cm]{geometry}
+
+
+
+\newganttchartelement{novel}{
+novel/.style={
+shape=rectangle,
+inner sep=0pt,
+draw=black!90,
+fill=red!50,
+rounded corners=3pt
+},
+novel incomplete/.style={
+/pgfgantt/novel,
+draw=black!90,
+color=red!50
+},
+novel left shift=-.1,
+novel right shift=.1
+}
+\newganttchartelement{revision}{
+revision/.style={
+shape=rectangle,
+inner sep=0pt,
+draw=black!90,
+fill=orange!50,
+rounded corners=3pt
+},
+revision incomplete/.style={
+/pgfgantt/novel,
+draw=black!90,
+color=red!50
+},
+novel left shift=-.1,
+novel right shift=.1
+}
+\newganttchartelement{warmup}{
+warmup/.style={
+shape=rectangle,
+inner sep=0pt,
+draw=black!90,
+fill=green!50,
+rounded corners=3pt
+},
+warmup incomplete/.style={
+/pgfgantt/novel,
+draw=black!90,
+color=red!50
+},
+novel left shift=-.1,
+novel right shift=.1
+}
+
+
+
+
+
+
+
+\title{Overview}
+
+\author{}
+
+\begin{document}
+\maketitle
+\noindent 
+
+
+
+
+
+
+\begin{tikzpicture}
+
+\begin{ganttchart}[
+vgrid,
+bar/.append style={fill=red!50, rounded corners=3pt},
+group/.append style={draw=black, fill=green!50, rounded corners=0.1pt},
+link/.style={[-to, line width=1pt},
+canvas/.style=%
+{shape=rectangle, fill=gray!15, rounded corners=3pt}
+]{1}{12}
+\gantttitle{Fundamental Skating Skills}{12} \\
+\gantttitlelist{1,...,12}{1} \\
+
+\ganttrevision{Sticky Skating}{1}{2} 
+\ganttwarmup{}{3}{12} 
+\ganttnewline 
+
+\ganttrevision{Backwards Skating}{1}{2} 
+\ganttwarmup{}{3}{12} 
+\ganttnewline 
+
+
+
+\ganttrevision{One Foot Sticky}{2}{2} 
+\ganttrevision{}{4}{4} 
+\ganttrevision{}{6}{6} 
+\ganttnewline 
+
+\ganttnovel{Figure 8}{1}{1} 
+\ganttrevision{}{2}{3} 
+\ganttwarmup{}{4}{12} \ganttnewline
+
+
+\ganttrevision{Weaves}{1}{2}  
+\ganttwarmup{}{3}{12} \ganttnewline 
+\ganttrevision{Carves}{1}{2}  
+\ganttwarmup{}{3}{12} \ganttnewline 
+
+
+\ganttrevision{Backwards Weaves}{3}{4}  
+\ganttwarmup{}{5}{12} \ganttnewline 
+\ganttrevision{Backwards Carves}{4}{5}  
+\ganttwarmup{}{6}{12} \ganttnewline 
+
+
+\ganttrevision{Falling}{1}{2} 
+\ganttnewline 
+
+\end{ganttchart}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{ganttchart}[
+vgrid,
+bar/.append style={fill=red!50, rounded corners=3pt},
+group/.append style={draw=black, fill=green!50, rounded corners=0.1pt},
+link/.style={[-to, line width=1pt},
+canvas/.style=%
+{shape=rectangle, fill=gray!15, rounded corners=3pt}
+]{1}{12}
+\gantttitle{One Foot Skating Skills}{12} \\
+\gantttitlelist{1,...,12}{1} \\
+
+
+%%%
+% One foot
+\ganttrevision{One Foot Glides}{1}{2} 
+\ganttwarmup{}{3}{3} \ganttnewline
+
+\ganttnovel{One Foot Circle}{2}{2} 
+\ganttrevision{}{3}{4} 
+\ganttwarmup{}{5}{12} \ganttnewline
+\ganttlink{elem0}{elem2}
+
+
+\ganttnovel{One Foot Serpentine}{3}{3} 
+\ganttrevision{}{4}{4} 
+\ganttwarmup{}{5}{10} \ganttnewline
+
+\ganttlink{elem0}{elem5}
+
+
+\ganttnovel{One Foot Self-Propelled}{9}{9}
+\ganttrevision{}{10}{10} 
+\ganttwarmup{}{11}{12} \ganttnewline
+
+\ganttlink{elem6}{elem8}
+
+% Backwards One Foot 
+\ganttnovel{Backwards Glides}{4}{4} 
+\ganttrevision{}{5}{6} 
+\ganttwarmup{}{7}{12} \ganttnewline
+
+\ganttnovel{Backwards Circles}{6}{6} 
+\ganttrevision{}{7}{8} 
+\ganttwarmup{}{9}{12} \ganttnewline
+
+
+
+\ganttnovel{Backwards Serpentine}{7}{7} 
+\ganttrevision{}{8}{9} 
+\ganttwarmup{}{10}{12} \ganttnewline
+
+
+
+\ganttnovel{Backwards Self-Propelled}{12}{12} 
+\ganttnewline
+
+
+
+
+\ganttnovel{Sideways Glides}{2}{2} 
+\ganttrevision{}{3}{4} 
+\ganttwarmup{}{5}{9} \ganttnewline
+\ganttlink{elem0}{elem21}
+
+
+\ganttnovel{Side Surfing}{8}{8} 
+\ganttrevision{}{9}{10} 
+\ganttwarmup{}{11}{12} \ganttnewline
+
+
+\ganttnovel{Back Foot Sideways Glides}{5}{5} 
+\ganttrevision{}{6}{7} 
+\ganttwarmup{}{8}{9} 
+\ganttnewline
+
+
+
+\ganttnovel{Back Foot Side Surfing}{9}{9} 
+\ganttrevision{}{10}{12} 
+\ganttnewline
+
+
+\ganttnovel{Alternating B/F Glides}{7}{7} 
+\ganttrevision{}{8}{9} 
+\ganttwarmup{}{10}{12} 
+\ganttnewline
+
+
+\ganttnovel{T-Stop Lateral}{1}{1} 
+\ganttrevision{}{2}{3} 
+\ganttnewline
+
+\ganttnovel{Powerslide Lateral}{2}{2} 
+\ganttrevision{}{3}{4} 
+\ganttwarmup{}{5}{12} 
+\ganttnewline
+
+\ganttnovel{Skateboard Push}{3}{3} 
+\ganttrevision{}{4}{5} 
+\ganttnewline
+
+\ganttnovel{Step Stop Lateral}{4}{4} 
+\ganttrevision{}{5}{6} 
+\ganttwarmup{}{7}{12} 
+\ganttnewline
+
+\ganttnovel{Drop Step Lateral}{7}{7} 
+\ganttrevision{}{8}{9} 
+\ganttwarmup{}{10}{12} 
+\ganttnewline
+
+
+
+\end{ganttchart}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{ganttchart}[
+vgrid,
+bar/.append style={fill=red!50, rounded corners=3pt},
+group/.append style={draw=black, fill=green!50, rounded corners=0.1pt},
+link/.style={[-to, line width=1pt},
+canvas/.style=%
+{shape=rectangle, fill=gray!15, rounded corners=3pt}
+]{1}{12}
+\gantttitle{Stops}{12} \\
+\gantttitlelist{1,...,12}{1} \\
+
+
+\ganttrevision{Plough Stops}{1}{1} 
+\ganttwarmup{}{2}{12} 
+\ganttnewline
+
+\ganttrevision{T Stops}{1}{1} 
+\ganttwarmup{}{2}{12} 
+\ganttnewline
+
+\ganttnovel{Powerslides}{1}{1} 
+\ganttrevision{}{2}{3} 
+\ganttwarmup{}{3}{12} 
+\ganttnewline
+
+\ganttnovel{One Foot Plough Stops}{2}{2} 
+\ganttrevision{}{3}{4} 
+\ganttwarmup{}{5}{12} 
+\ganttnewline
+
+
+\ganttnovel{Backwards Plough Stops}{4}{4} 
+\ganttrevision{}{5}{6} 
+\ganttwarmup{}{7}{12} 
+\ganttnewline
+
+
+\ganttnovel{Hockey Stops}{6}{6} 
+\ganttrevision{}{7}{8} 
+\ganttwarmup{}{9}{12} 
+\ganttnewline
+
+\ganttnovel{Backwards Hockey Stops}{8}{8} 
+\ganttrevision{}{9}{10} 
+\ganttwarmup{}{11}{12} 
+\ganttnewline
+
+
+\end{ganttchart}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+\begin{ganttchart}[
+vgrid,
+bar/.append style={fill=red!50, rounded corners=3pt},
+group/.append style={draw=black, fill=green!50, rounded corners=0.1pt},
+link/.style={[-to, line width=1pt},
+canvas/.style=%
+{shape=rectangle, fill=gray!15, rounded corners=3pt}
+]{1}{12}
+\gantttitle{Crossovers and Footwork}{12} \\
+\gantttitlelist{1,...,12}{1} \\
+
+
+\ganttrevision{Crossovers}{1}{2} 
+\ganttwarmup{}{3}{12} 
+\ganttnewline
+
+\ganttrevision{27 in 5}{5}{5} 
+\ganttrevision{}{10}{10} 
+\ganttnewline
+
+\ganttnovel{Crossovers with Leap}{8}{8} 
+\ganttrevision{}{9}{10} 
+\ganttnewline
+
+
+\ganttnovel{D / C Cuts}{1}{1} 
+\ganttrevision{}{2}{3} 
+\ganttnewline
+
+\ganttnovel{Lateral - Powerslide}{2}{2} 
+\ganttrevision{}{3}{4} 
+\ganttnewline
+
+\ganttnovel{Russian Circles}{3}{3} 
+\ganttrevision{}{4}{5} 
+\ganttnewline
+
+\ganttnovel{Drop Steps}{4}{4} 
+\ganttrevision{}{5}{6} 
+\ganttnewline
+
+\ganttnovel{Backwards Crossovers}{7}{7} 
+\ganttrevision{}{8}{9} 
+\ganttwarmup{}{10}{12} 
+\ganttnewline
+
+\ganttnovel{Backwards Lifting Feet}{9}{9} 
+\ganttrevision{}{10}{11} 
+\ganttnewline
+
+\ganttnovel{Lateral - Plough}{5}{5} 
+\ganttrevision{}{6}{7} 
+\ganttnewline
+
+\ganttnovel{Drop Step - Hockey}{6}{6} 
+\ganttrevision{}{7}{8} 
+\ganttnewline
+
+\ganttnovel{Drop Step - Backwards Hockey}{7}{7} 
+\ganttrevision{}{8}{9} 
+\ganttnewline
+
+\ganttnovel{Finnish Snakes}{8}{8} 
+\ganttrevision{}{9}{10} 
+\ganttnewline
+
+\ganttnovel{Finnish Snakes}{9}{9} 
+\ganttrevision{}{10}{11} 
+\ganttnewline
+
+\ganttnovel{Circling}{10}{10} 
+\ganttrevision{}{11}{12} 
+\ganttnewline
+
+
+\end{ganttchart}
+\end{tikzpicture}
+
+
+
+
+
+\end{document}
